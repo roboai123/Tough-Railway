@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tough Railway - Practice Hard. Prepare Smart. | Railway Exam Preparation Platform</title>
+    <meta name="description" content="Tough Railway is a competitive exam preparation platform for RRB NTPC, Group D, ALP, JE, and RPF. Practice PYQs, Chapter Tests, and Full Mock Tests with real CBT exam engine.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        railway: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                            gold: '#f59e0b',
+                            goldHover: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+        }
+        /* TCS iON Palette State Rules */
+        .q-not-visited { background-color: #e2e8f0; color: #334155; border-color: #cbd5e1; }
+        .q-not-answered { background-color: #ef4444; color: #ffffff; border-color: #dc2626; border-radius: 4px 12px 4px 12px; }
+        .q-answered { background-color: #22c55e; color: #ffffff; border-color: #16a34a; border-radius: 12px 4px 12px 4px; }
+        .q-marked { background-color: #eab308; color: #ffffff; border-color: #ca8a04; border-radius: 50%; }
+        .q-ans-marked { background-color: #a855f7; color: #ffffff; border-color: #9333ea; border-radius: 50%; position: relative; }
+        .q-ans-marked::after {
+            content: '✓';
+            position: absolute;
+            bottom: -2px;
+            right: 0px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #22c55e;
+            background: white;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-slate-900 text-slate-100">
+
+    <!-- Navigation Header -->
+    <header id="main-header" class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur border-b border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/30">
+                        <i class="fa-solid fa-train-subway text-slate-950 text-xl font-bold"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xl font-black tracking-wider text-white">TOUGH</span>
+                            <span class="text-xl font-black tracking-wider text-amber-400">RAILWAY</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 tracking-widest uppercase font-semibold">Practice Hard. Prepare Smart.</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
+                    <button onclick="navigateTo('home')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-200 transition">Home</button>
+                    <button onclick="navigateTo('exams')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-300 transition">Exams</button>
+                    <button onclick="navigateTo('mock-tests')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-300 transition">Mock Tests</button>
+                    <button onclick="navigateTo('pyq')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-300 transition">PYQs</button>
+                    <button onclick="navigateTo('chapter-tests')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-300 transition">Chapter Tests</button>
+                    <button onclick="navigateTo('practice')" class="nav-link px-3 py-2 rounded-md hover:text-amber-400 text-slate-300 transition">Practice</button>
+                    <button onclick="navigateTo('docs')" class="nav-link px-3 py-2 rounded-md text-amber-400 hover:text-amber-300 transition flex items-center gap-1"><i class="fa-solid fa-code"></i> Docs & Setup</button>
+                </nav>
+
+                <!-- Auth / Dashboard Controls -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="navigateTo('dashboard')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-gauge-high text-amber-400"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button onclick="navigateTo('bookmarks')" class="p-2 text-slate-300 hover:text-amber-400 transition" title="Bookmarked Questions">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </button>
+                    <div id="auth-btn-container">
+                        <button onclick="navigateTo('login')" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md shadow-amber-500/20 transition">
+                            Login / Register
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2 text-sm">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Home</button>
+            <button onclick="navigateTo('exams'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Exams</button>
+            <button onclick="navigateTo('mock-tests'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Mock Tests</button>
+            <button onclick="navigateTo('pyq'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Previous Year Questions</button>
+            <button onclick="navigateTo('chapter-tests'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Chapter Tests</button>
+            <button onclick="navigateTo('practice'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Practice Mode</button>
+            <button onclick="navigateTo('dashboard'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-amber-400">Student Dashboard</button>
+            <button onclick="navigateTo('bookmarks'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-slate-200">Bookmarks</button>
+            <button onclick="navigateTo('docs'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md hover:bg-slate-800 text-emerald-400">Deployment & Scalability Guide</button>
+            <div class="pt-2 border-t border-slate-800 flex gap-2">
+                <button onclick="navigateTo('login'); toggleMobileMenu()" class="w-full py-2 text-center text-xs font-semibold rounded-lg bg-amber-500 text-slate-950">
+                    Login / Register
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-container" class="flex-grow">
+
+        <!-- 1. HOME VIEW -->
+        <section id="view-home" class="page-view space-y-16 py-8">
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 rounded-3xl bg-gradient-to-b from-slate-800/80 to-slate-900 border border-slate-800 shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 text-center max-w-3xl mx-auto space-y-6">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wide uppercase">
+                        <i class="fa-solid fa-bolt text-amber-400"></i> TCS Pattern CBT Practice Engine 2026
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Crack Railway Exams with <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">Tough Practice</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 leading-relaxed font-normal">
+                        Practice Railway Previous Year Questions, Chapter Tests, and Full-Length Mock Tests tailored specifically for RRB NTPC, Group D, ALP, JE & RPF.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <button onclick="navigateTo('mock-tests')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/25 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play"></i> Start Practicing Now
+                        </button>
+                        <button onclick="navigateTo('pyq')" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-base transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-file-lines"></i> Explore Mock Tests
+                        </button>
+                    </div>
+
+                    <!-- Trust badging -->
+                    <div class="pt-6 flex flex-wrap justify-center items-center gap-6 text-slate-400 text-xs font-medium border-t border-slate-800/80">
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Free TCS CBT Simulator</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Exact Railway Marking Scheme (+1, -0.33)</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> Step-by-Step Solutions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Railway Exams Grid Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="text-center space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Targeted Railway Recruitment Exams</h2>
+                    <p class="text-slate-400 text-sm">Select your exam target to access specialized practice tests and mock series</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="exams-grid-container">
+                    <!-- Dynamic Exam Cards inserted by JS -->
+                </div>
+            </div>
+
+            <!-- Subjects Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="text-center space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Subject-wise Master Practice</h2>
+                    <p class="text-slate-400 text-sm">Strengthen your subject fundamentals with chapter-wise solved questions</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="subjects-grid-container">
+                    <!-- Dynamic Subjects inserted by JS -->
+                </div>
+            </div>
+
+            <!-- Key Features Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-slate-950/60 rounded-3xl p-8 border border-slate-800 space-y-8">
+                <div class="text-center space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Why Top Aspirants Choose Tough Railway</h2>
+                    <p class="text-slate-400 text-sm">Engineered with features to simulate real CBT examination environment</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg"><i class="fa-solid fa-history"></i></div>
+                        <h3 class="text-lg font-bold text-white">Previous Year Questions</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Authentic Railway solved papers from 2018 to 2024 organized shift-wise and topic-wise.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg"><i class="fa-solid fa-list-check"></i></div>
+                        <h3 class="text-lg font-bold text-white">Chapter-wise Tests</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Focused test sets dedicated to specific topics like Percentage, Syllogisms, and Ohm's Law.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3 class="text-lg font-bold text-white">Real CBT Engine</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Exact TCS iON interface with 5-state question palette, countdown timer, and auto submit.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3 class="text-lg font-bold text-white">Performance Analytics</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed">Instant raw score calculation, accuracy percentage, subject breakdown, and time management analysis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Statistics Counter Bar -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 rounded-2xl border border-amber-500/20 text-center">
+                    <div>
+                        <div id="stat-questions" class="text-3xl font-extrabold text-amber-400">10,000+</div>
+                        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Practice Questions</div>
+                    </div>
+                    <div>
+                        <div id="stat-tests" class="text-3xl font-extrabold text-white">150+</div>
+                        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Full Mock Tests</div>
+                    </div>
+                    <div>
+                        <div id="stat-students" class="text-3xl font-extrabold text-amber-400">25,000+</div>
+                        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Active Aspirants</div>
+                    </div>
+                    <div>
+                        <div id="stat-exams" class="text-3xl font-extrabold text-white">6+</div>
+                        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Railway Exams</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. EXAM DETAILS VIEW (RRB NTPC, Group D, etc.) -->
+        <section id="view-exams" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div id="exam-detail-header" class="bg-slate-800 border border-slate-700 rounded-3xl p-8 space-y-4">
+                <!-- Populated dynamically via JS based on selected exam -->
+            </div>
+
+            <!-- Exam Overview & Pattern -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap text-amber-400"></i> Exam Pattern & Scheme
+                        </h3>
+                        <div id="exam-pattern-content" class="text-slate-300 text-sm leading-relaxed space-y-3">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-book-open text-amber-400"></i> Subject Weightage
+                        </h3>
+                        <div id="exam-subjects-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- FAQs Accordion -->
+                    <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white">Frequently Asked Questions</h3>
+                        <div id="exam-faqs-container" class="space-y-3">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Actions -->
+                <div class="space-y-6">
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 space-y-4 sticky top-24">
+                        <h4 class="font-bold text-white text-lg">Quick Practice Links</h4>
+                        <button onclick="startExamMock('RRB NTPC')" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow transition">
+                            Start Full Mock Test
+                        </button>
+                        <button onclick="navigateTo('pyq')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl border border-slate-600 transition">
+                            Attempt PYQs
+                        </button>
+                        <button onclick="navigateTo('chapter-tests')" class="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-xl border border-slate-600 transition">
+                            Subject Chapter Tests
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MOCK TESTS VIEW -->
+        <section id="view-mock-tests" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-white">Railway Full Length Mock Tests</h1>
+                    <p class="text-slate-400 text-sm mt-1">Simulate real TCS CBT examination environment with negative marking and timer.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <select id="mock-exam-filter" onchange="renderMockTests()" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-400">
+                        <option value="ALL">All Exams</option>
+                        <option value="RRB NTPC">RRB NTPC</option>
+                        <option value="RRB Group D">RRB Group D</option>
+                        <option value="RRB ALP">RRB ALP</option>
+                        <option value="RRB JE">RRB JE</option>
+                        <option value="RPF SI">RPF SI & Constable</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mock-tests-list">
+                <!-- Dynamically populated mock tests cards -->
+            </div>
+        </section>
+
+        <!-- 4. PYQ VIEW -->
+        <section id="view-pyq" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-white">Previous Year Question (PYQ) Vault</h1>
+                    <p class="text-slate-400 text-sm mt-1">Select official Railway recruitment shift papers and practice live in CBT mode.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Target Exam</label>
+                        <select id="pyq-exam-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-400">
+                            <option value="RRB NTPC">RRB NTPC</option>
+                            <option value="RRB Group D">RRB Group D</option>
+                            <option value="RRB ALP">RRB ALP</option>
+                            <option value="RRB JE">RRB JE</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Exam Year</label>
+                        <select id="pyq-year-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-400">
+                            <option value="2024">2024 CBT Paper</option>
+                            <option value="2022">2022 Stage 1</option>
+                            <option value="2021">2021 Stage 1</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Shift</label>
+                        <select id="pyq-shift-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-400">
+                            <option value="Shift 1">Shift 1 (Morning)</option>
+                            <option value="Shift 2">Shift 2 (Afternoon)</option>
+                            <option value="Shift 3">Shift 3 (Evening)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Subject Filter</label>
+                        <select id="pyq-subject-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-amber-400">
+                            <option value="ALL">All Subjects (Full Paper)</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Reasoning">Reasoning</option>
+                            <option value="General Science">General Science</option>
+                            <option value="General Awareness">General Awareness</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-end">
+                    <button onclick="startPYQTest()" class="px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i> Start PYQ Mock Test
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CHAPTER TESTS VIEW -->
+        <section id="view-chapter-tests" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div>
+                <h1 class="text-3xl font-extrabold text-white">Subject & Chapter Wise Practice Tests</h1>
+                <p class="text-slate-400 text-sm mt-1">Target weak topics with bite-sized speed tests.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="chapter-tests-container">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+
+        <!-- 6. PRACTICE MODE VIEW -->
+        <section id="view-practice" class="page-view hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-700 pb-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-white">Interactive Practice Mode</h1>
+                        <p class="text-slate-400 text-xs">Solve questions without timer pressure. View instant step-by-step explanations.</p>
+                    </div>
+                    <button onclick="loadPracticeQuestion()" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold rounded-lg border border-slate-600 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-rotate"></i> Load Next Question
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <select id="practice-subject-filter" onchange="loadPracticeQuestion()" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200">
+                        <option value="ALL">All Subjects</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Reasoning">Reasoning</option>
+                        <option value="General Science">General Science</option>
+                        <option value="General Awareness">General Awareness</option>
+                    </select>
+                    <select id="practice-difficulty-filter" onchange="loadPracticeQuestion()" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200">
+                        <option value="ALL">All Difficulty Levels</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+                <!-- Single Question Container -->
+                <div id="practice-card" class="bg-slate-900 border border-slate-700/80 rounded-2xl p-6 space-y-6">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CBT TEST ENGINE VIEW (FULL EXAM SIMULATOR) -->
+        <section id="view-test-engine" class="page-view hidden min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+            <!-- CBT Exam Bar -->
+            <div class="bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-sm">
+                        <i class="fa-solid fa-laptop text-xs"></i>
+                    </div>
+                    <div>
+                        <h2 id="cbt-test-title" class="text-sm font-bold text-white">RRB NTPC Stage 1 Mock Test 1</h2>
+                        <span id="cbt-section-tag" class="text-[11px] text-amber-400 font-semibold">TCS iON CBT Exam Interface</span>
+                    </div>
+                </div>
+
+                <!-- Live Countdown Timer -->
+                <div class="flex items-center gap-4">
+                    <div class="bg-slate-800 border border-slate-700 rounded-lg px-4 py-1.5 flex items-center gap-2">
+                        <i class="fa-regular fa-clock text-amber-400"></i>
+                        <div>
+                            <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Time Left</div>
+                            <div id="cbt-timer" class="text-base font-extrabold text-amber-400 font-mono">20:00</div>
+                        </div>
+                    </div>
+                    <button onclick="confirmSubmitTest()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow transition">
+                        Submit Test
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main CBT Layout Body -->
+            <div class="flex-grow grid grid-cols-1 lg:grid-cols-4 gap-0 overflow-hidden">
+                <!-- Left 3 Columns: Question Panel -->
+                <div class="lg:col-span-3 flex flex-col border-r border-slate-800 bg-slate-900/40">
+                    
+                    <!-- Subject Tabs Header -->
+                    <div class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2 overflow-x-auto text-xs" id="cbt-subject-tabs">
+                        <!-- Dynamic subject tabs -->
+                    </div>
+
+                    <!-- Question Content Area -->
+                    <div class="flex-grow p-6 space-y-6 overflow-y-auto custom-scrollbar" id="cbt-question-box">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <span id="cbt-q-number" class="text-sm font-bold text-amber-400">Question No. 1</span>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="text-slate-400">Marks: <strong class="text-emerald-400">+1.0</strong></span>
+                                <span class="text-slate-400">Negative: <strong class="text-rose-400">-0.33</strong></span>
+                                <button id="cbt-bookmark-btn" onclick="toggleBookmarkCurrentQuestion()" class="text-slate-400 hover:text-amber-400 transition" title="Bookmark Question">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question Text -->
+                        <div id="cbt-q-text" class="text-base sm:text-lg font-medium text-slate-100 leading-relaxed">
+                            Loading Question...
+                        </div>
+
+                        <!-- Options List -->
+                        <div id="cbt-options-container" class="space-y-3 pt-2">
+                            <!-- Radio option cards inserted by JS -->
+                        </div>
+                    </div>
+
+                    <!-- CBT Bottom Action Controls -->
+                    <div class="bg-slate-900 border-t border-slate-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="cbtActionMarkForReview()" class="px-3.5 py-2 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-500/40 hover:bg-purple-600/30 transition">
+                                Mark for Review & Next
+                            </button>
+                            <button onclick="cbtActionClearResponse()" class="px-3.5 py-2 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition">
+                                Clear Response
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="cbtActionPrevious()" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition">
+                                <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                            </button>
+                            <button onclick="cbtActionSaveAndNext()" class="px-5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow transition">
+                                Save & Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Question Palette Sidebar -->
+                <div class="lg:col-span-1 bg-slate-950 p-4 flex flex-col space-y-4 border-t lg:border-t-0 border-slate-800">
+                    
+                    <!-- Student Profile Mini Header -->
+                    <div class="flex items-center gap-3 p-3 bg-slate-900 rounded-xl border border-slate-800">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-amber-400 text-sm">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <div id="cbt-user-name" class="text-xs font-bold text-white">Candidate: Student</div>
+                            <div class="text-[10px] text-emerald-400 font-semibold">Status: Exam Active</div>
+                        </div>
+                    </div>
+
+                    <!-- Palette Legend Stats -->
+                    <div class="grid grid-cols-2 gap-2 text-[11px] p-3 bg-slate-900 rounded-xl border border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <span id="legend-count-answered" class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold q-answered">0</span>
+                            <span class="text-slate-300">Answered</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="legend-count-not-answered" class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold q-not-answered">0</span>
+                            <span class="text-slate-300">Not Answered</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="legend-count-not-visited" class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold q-not-visited">0</span>
+                            <span class="text-slate-300">Not Visited</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="legend-count-marked" class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold q-marked">0</span>
+                            <span class="text-slate-300">Marked Review</span>
+                        </div>
+                        <div class="col-span-2 flex items-center gap-2 pt-1 border-t border-slate-800">
+                            <span id="legend-count-ans-marked" class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold q-ans-marked">0</span>
+                            <span class="text-slate-300 text-[10px]">Answered & Marked for Review</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Grid Palette -->
+                    <div class="flex-grow space-y-2">
+                        <div class="text-xs font-bold text-slate-300 uppercase tracking-wider">Question Palette</div>
+                        <div id="cbt-palette-grid" class="grid grid-cols-5 gap-2 max-h-64 lg:max-h-80 overflow-y-auto p-1 custom-scrollbar">
+                            <!-- Buttons 1 to 20 inserted by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button onclick="confirmSubmitTest()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-sm shadow-lg transition">
+                        Submit Final Test
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. RESULT & PERFORMANCE ANALYSIS VIEW -->
+        <section id="view-result" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-700 pb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Scorecard & Detailed Analysis</span>
+                        <h1 id="result-test-title" class="text-2xl sm:text-3xl font-extrabold text-white mt-1">RRB NTPC Mock Test 1 Results</h1>
+                    </div>
+                    <button onclick="navigateTo('mock-tests')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Back to All Mock Tests
+                    </button>
+                </div>
+
+                <!-- Top Score Cards Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-amber-500/30">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Your Raw Score</div>
+                        <div id="res-score" class="text-2xl sm:text-3xl font-black text-amber-400 mt-1">0.00</div>
+                        <div id="res-max-score" class="text-[10px] text-slate-500 font-semibold">out of 20.0</div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Accuracy</div>
+                        <div id="res-accuracy" class="text-2xl sm:text-3xl font-black text-emerald-400 mt-1">0%</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">Correct / Attempted</div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Correct</div>
+                        <div id="res-correct" class="text-2xl sm:text-3xl font-black text-emerald-500 mt-1">0</div>
+                        <div class="text-[10px] text-emerald-500/70 font-semibold">+1.0 per qn</div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Incorrect</div>
+                        <div id="res-incorrect" class="text-2xl sm:text-3xl font-black text-rose-500 mt-1">0</div>
+                        <div class="text-[10px] text-rose-500/70 font-semibold">-0.33 negative</div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Unattempted</div>
+                        <div id="res-unattempted" class="text-2xl sm:text-3xl font-black text-slate-400 mt-1">0</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">0 marks lost</div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800">
+                        <div class="text-[11px] font-bold text-slate-400 uppercase">Time Spent</div>
+                        <div id="res-time-spent" class="text-2xl sm:text-3xl font-black text-blue-400 mt-1">00:00</div>
+                        <div class="text-[10px] text-slate-500 font-semibold">mins</div>
+                    </div>
+                </div>
+
+                <!-- Subject Wise Breakdown Progress Bars -->
+                <div class="p-6 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-amber-400"></i> Subject Wise Performance Analysis
+                    </h3>
+                    <div id="subject-performance-bars" class="space-y-4">
+                        <!-- Bars dynamically rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Detailed Solutions Review -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-amber-400"></i> Question-by-Question Detailed Solutions
+                        </h3>
+                        <div class="flex gap-2 text-xs">
+                            <button onclick="filterReviewList('ALL')" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg">All</button>
+                            <button onclick="filterReviewList('INCORRECT')" class="px-3 py-1 bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800 rounded-lg">Incorrect</button>
+                        </div>
+                    </div>
+
+                    <div id="review-questions-container" class="space-y-4">
+                        <!-- Dynamic solution cards inserted by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. STUDENT DASHBOARD VIEW -->
+        <section id="view-dashboard" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-700 pb-6">
+                    <div>
+                        <div class="text-xs font-bold uppercase text-amber-400">Student Portal</div>
+                        <h1 id="dash-user-welcome" class="text-2xl sm:text-3xl font-extrabold text-white">Welcome back, Aspirant!</h1>
+                    </div>
+                    <button onclick="resetDashboardStats()" class="px-3.5 py-2 text-xs bg-slate-900 hover:bg-slate-950 text-slate-400 rounded-xl border border-slate-700 transition">
+                        Reset Practice Analytics
+                    </button>
+                </div>
+
+                <!-- Aggregate Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700/80 space-y-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase">Tests Attempted</div>
+                        <div id="dash-total-tests" class="text-3xl font-black text-amber-400">0</div>
+                    </div>
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700/80 space-y-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase">Average Score</div>
+                        <div id="dash-avg-score" class="text-3xl font-black text-emerald-400">0.0</div>
+                    </div>
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700/80 space-y-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase">Best Score</div>
+                        <div id="dash-best-score" class="text-3xl font-black text-blue-400">0.0</div>
+                    </div>
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700/80 space-y-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase">Overall Accuracy</div>
+                        <div id="dash-overall-acc" class="text-3xl font-black text-purple-400">0%</div>
+                    </div>
+                </div>
+
+                <!-- Recent Test History Table -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-white">Recent Mock Test History</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-900 text-slate-400 uppercase text-[10px] font-bold border-b border-slate-700">
+                                <tr>
+                                    <th class="p-3">Test Name</th>
+                                    <th class="p-3">Date</th>
+                                    <th class="p-3">Score</th>
+                                    <th class="p-3">Accuracy</th>
+                                    <th class="p-3 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dash-history-rows" class="divide-y divide-slate-800">
+                                <tr>
+                                    <td colspan="5" class="p-4 text-center text-slate-500">No mock tests attempted yet. Start practicing now!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. BOOKMARKS VIEW -->
+        <section id="view-bookmarks" class="page-view hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-white">Bookmarked Questions</h1>
+                    <p class="text-slate-400 text-sm mt-1">Questions saved during practice and mock tests for revision.</p>
+                </div>
+                <button onclick="clearAllBookmarks()" class="px-3.5 py-2 text-xs bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800 rounded-xl transition">
+                    Clear All Bookmarks
+                </button>
+            </div>
+
+            <div id="bookmarks-container" class="space-y-4">
+                <!-- Bookmarked question cards populated by JS -->
+            </div>
+        </section>
+
+        <!-- 11. LOGIN / REGISTER VIEW -->
+        <section id="view-login" class="page-view hidden max-w-md mx-auto px-4 py-16 space-y-6">
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 space-y-6 shadow-2xl">
+                <div class="text-center space-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 mx-auto flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-white">Student Sign In</h1>
+                    <p class="text-xs text-slate-400">Demo student account stored safely in browser storage.</p>
+                </div>
+
+                <form onsubmit="handleDemoLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Student Full Name</label>
+                        <input type="text" id="auth-name-input" required placeholder="e.g. Rahul Sharma" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Target Railway Exam</label>
+                        <select id="auth-exam-input" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="RRB NTPC">RRB NTPC</option>
+                            <option value="RRB Group D">RRB Group D</option>
+                            <option value="RRB ALP">RRB ALP</option>
+                            <option value="RRB JE">RRB JE</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow transition">
+                        Save Student Profile & Continue
+                    </button>
+                </form>
+
+                <div class="pt-4 border-t border-slate-700 text-center">
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        <i class="fa-solid fa-circle-info text-amber-400 mr-1"></i>
+                        Note: This demo uses local storage. Architecture is structured for seamless integration with Firebase Auth later.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. DEVELOPER / SETUP / DEPLOYMENT GUIDE VIEW -->
+        <section id="view-docs" class="page-view hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 space-y-6">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase">
+                        Architecture & Deployment Guide
+                    </span>
+                    <h1 class="text-3xl font-extrabold text-white mt-2">Tough Railway Platform Documentation</h1>
+                    <p class="text-slate-400 text-sm mt-1">Complete technical guide on file modularity, adding 10,000+ questions, changing exam rules, and deploying to GitHub Pages.</p>
+                </div>
+
+                <div class="space-y-6 text-sm text-slate-300 leading-relaxed">
+                    <!-- Section 1 -->
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700 space-y-2">
+                        <h3 class="text-lg font-bold text-white text-amber-400">1. Modular Architecture Overview</h3>
+                        <p>
+                            The application is engineered as a unified single-page architecture that cleanly separates data configurations from view logic.
+                        </p>
+                        <ul class="list-disc pl-5 space-y-1 text-xs text-slate-300">
+                            <li><strong>questionsDB:</strong> JavaScript array storing structured questions with IDs, subjects, options, correct answers (0-indexed), explanations, and difficulty ratings.</li>
+                            <li><strong>testConfigsDB:</strong> Test configurations setting total duration (minutes), marks per correct answer (+1), and negative marking (-0.33).</li>
+                            <li><strong>CBT Engine (cbtState):</strong> Isolated engine managing timer countdowns, answer states, question palette markers, and local storage state.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700 space-y-2">
+                        <h3 class="text-lg font-bold text-white text-amber-400">2. How to Add New Questions</h3>
+                        <p class="text-xs">
+                            To add new questions, simply push a new JavaScript object into the <code>questionsDB</code> array:
+                        </p>
+                        <pre class="bg-slate-950 p-3 rounded-lg border border-slate-800 text-emerald-400 text-xs overflow-x-auto">
+{
+    id: 21,
+    exam: "RRB NTPC",
+    subject: "Mathematics",
+    chapter: "Time and Work",
+    question: "A can finish a job in 10 days, B in 15 days. How many days working together?",
+    options: ["5 days", "6 days", "8 days", "12 days"],
+    answer: 1, // 0-indexed index (6 days is option index 1)
+    explanation: "1/10 + 1/15 = 5/30 = 1/6. Total days = 6.",
+    difficulty: "Easy",
+    year: "2024"
+}</pre>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700 space-y-2">
+                        <h3 class="text-lg font-bold text-white text-amber-400">3. How to Deploy on GitHub Pages</h3>
+                        <ol class="list-decimal pl-5 text-xs space-y-2">
+                            <li>Create a public GitHub repository named <code>tough-railway</code>.</li>
+                            <li>Upload this <code>index.html</code> file to the repository's root folder.</li>
+                            <li>Go to <strong>Repository Settings &gt; Pages</strong>.</li>
+                            <li>Under <strong>Source</strong>, select <code>main</code> or <code>master</code> branch and click <strong>Save</strong>.</li>
+                            <li>Your website will be live at <code>https://YOUR_USERNAME.github.io/tough-railway/</code>.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Section 4 -->
+                    <div class="p-5 bg-slate-900 rounded-2xl border border-slate-700 space-y-2">
+                        <h3 class="text-lg font-bold text-white text-amber-400">4. Firebase & Backend Scalability</h3>
+                        <p class="text-xs">
+                            The platform functions completely offline and static via <code>localStorage</code>. When you are ready to expand to cloud database storage:
+                        </p>
+                        <ul class="list-disc pl-5 text-xs space-y-1">
+                            <li>Replace <code>localStorage.setItem()</code> calls in <code>saveTestResultToStorage()</code> with Firestore <code>addDoc()</code>.</li>
+                            <li>Replace <code>handleDemoLogin()</code> with Firebase <code>signInWithPopup()</code> or <code>signInAnonymously()</code>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Website Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Col 1: Brand -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-train-subway"></i>
+                        </div>
+                        <span class="text-base font-black text-white tracking-wider">TOUGH <span class="text-amber-400">RAILWAY</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Dedicated online preparation platform for Indian Railways Recruitment Board exams. Practice Hard. Prepare Smart.
+                    </p>
+                </div>
+
+                <!-- Col 2: Target Exams -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold text-sm">Railway Exams</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" onclick="navigateTo('exams'); loadExamDetail('RRB NTPC')" class="hover:text-amber-400">RRB NTPC (Non-Technical)</a></li>
+                        <li><a href="#" onclick="navigateTo('exams'); loadExamDetail('RRB Group D')" class="hover:text-amber-400">RRB Group D (Level 1)</a></li>
+                        <li><a href="#" onclick="navigateTo('exams'); loadExamDetail('RRB ALP')" class="hover:text-amber-400">RRB ALP (Assistant Loco Pilot)</a></li>
+                        <li><a href="#" onclick="navigateTo('exams'); loadExamDetail('RRB JE')" class="hover:text-amber-400">RRB JE (Junior Engineer)</a></li>
+                        <li><a href="#" onclick="navigateTo('exams'); loadExamDetail('RPF SI')" class="hover:text-amber-400">RPF SI & Constable</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Practice Tests -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold text-sm">Practice Tools</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" onclick="navigateTo('mock-tests')" class="hover:text-amber-400">Full Length Mock Tests</a></li>
+                        <li><a href="#" onclick="navigateTo('pyq')" class="hover:text-amber-400">Previous Year Questions (PYQs)</a></li>
+                        <li><a href="#" onclick="navigateTo('chapter-tests')" class="hover:text-amber-400">Topic & Chapter Wise Tests</a></li>
+                        <li><a href="#" onclick="navigateTo('practice')" class="hover:text-amber-400">Untimed Practice Engine</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Platform Guide -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold text-sm">Deployment & Info</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" onclick="navigateTo('docs')" class="hover:text-amber-400">Developer Documentation</a></li>
+                        <li><a href="#" onclick="navigateTo('dashboard')" class="hover:text-amber-400">Student Dashboard</a></li>
+                        <li><a href="#" onclick="navigateTo('bookmarks')" class="hover:text-amber-400">Bookmarked Questions</a></li>
+                        <li><a href="#" onclick="navigateTo('login')" class="hover:text-amber-400">Login / Register</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-900 text-center flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+                <p>&copy; 2026 Tough Railway. All rights reserved. Compatible with GitHub Pages.</p>
+                <div class="flex gap-4">
+                    <span class="text-slate-400">TCS iON Pattern CBT Exam Simulator</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ==========================================================================
+           1. QUESTION DATABASE (Structured JSON Array - 20+ Questions)
+           ========================================================================== */
+        const questionsDB = [
+            // Mathematics
+            {
+                id: 1,
+                exam: "RRB NTPC",
+                subject: "Mathematics",
+                chapter: "Percentage",
+                question: "A number is increased by 20% and then decreased by 20%. What is the net percentage change in the number?",
+                options: ["No change", "4% decrease", "4% increase", "2% decrease"],
+                answer: 1, // 4% decrease
+                explanation: "Net change = x + y + (xy/100) = +20 - 20 + ((20 * -20) / 100) = 0 - 4 = -4%. Hence, 4% decrease.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 2,
+                exam: "RRB NTPC",
+                subject: "Mathematics",
+                chapter: "Ratio and Proportion",
+                question: "If A : B = 2 : 3 and B : C = 4 : 5, find the ratio A : B : C.",
+                options: ["8 : 12 : 15", "2 : 4 : 5", "6 : 8 : 10", "8 : 10 : 15"],
+                answer: 0, // 8 : 12 : 15
+                explanation: "Multiply first ratio by 4 -> A : B = 8 : 12. Multiply second ratio by 3 -> B : C = 12 : 15. Thus A : B : C = 8 : 12 : 15.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 3,
+                exam: "RRB Group D",
+                subject: "Mathematics",
+                chapter: "Time and Work",
+                question: "Pipe A can fill a tank in 12 hours and Pipe B can fill it in 18 hours. If both pipes are opened together, how long will it take to fill the tank?",
+                options: ["7.2 hours", "8 hours", "9.5 hours", "6.5 hours"],
+                answer: 0, // 7.2 hours
+                explanation: "Combined rate = 1/12 + 1/18 = (3 + 2)/36 = 5/36 per hour. Total time = 36/5 = 7.2 hours.",
+                difficulty: "Moderate",
+                year: "2022"
+            },
+            {
+                id: 4,
+                exam: "RRB ALP",
+                subject: "Mathematics",
+                chapter: "Speed Distance Time",
+                question: "A train 150 meters long crosses a telegraph pole in 9 seconds. What is the speed of the train in km/h?",
+                options: ["50 km/h", "60 km/h", "72 km/h", "48 km/h"],
+                answer: 1, // 60 km/h
+                explanation: "Speed in m/s = 150 / 9 = 50/3 m/s. In km/h = (50/3) * (18/5) = 60 km/h.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 5,
+                exam: "RRB NTPC",
+                subject: "Mathematics",
+                chapter: "Profit and Loss",
+                question: "By selling an article for ₹720, a trader loses 10%. At what price should he sell it to gain 20%?",
+                options: ["₹840", "₹960", "₹900", "₹1000"],
+                answer: 1, // ₹960
+                explanation: "Cost Price (CP) = 720 / 0.90 = ₹800. Selling Price for 20% gain = 800 * 1.20 = ₹960.",
+                difficulty: "Moderate",
+                year: "2021"
+            },
+
+            // Reasoning
+            {
+                id: 6,
+                exam: "RRB NTPC",
+                subject: "Reasoning",
+                chapter: "Coding Decoding",
+                question: "In a certain code language, 'TRAIN' is written as 'WUDLQ'. How will 'BUS' be written in that same code?",
+                options: ["EXV", "EVX", "DWU", "FXW"],
+                answer: 0, // EXV
+                explanation: "Each letter is shifted forward by +3 positions: T+3=W, R+3=U, A+3=D, I+3=L, N+3=Q. So B+3=E, U+3=X, S+3=V -> EXV.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 7,
+                exam: "RRB Group D",
+                subject: "Reasoning",
+                chapter: "Syllogism",
+                question: "Statements: All Cars are Trains. Some Trains are Buses.\nConclusions:\nI. Some Cars are Buses.\nII. Some Trains are Cars.",
+                options: ["Only conclusion I follows", "Only conclusion II follows", "Both I and II follow", "Neither I nor II follows"],
+                answer: 1, // Only II follows
+                explanation: "All Cars are Trains implies Some Trains are Cars (II follows directly). No direct overlap guaranteed between Cars and Buses (I does not follow necessarily).",
+                difficulty: "Moderate",
+                year: "2022"
+            },
+            {
+                id: 8,
+                exam: "RRB ALP",
+                subject: "Reasoning",
+                chapter: "Number Series",
+                question: "Find the missing term in the series: 7, 11, 19, 35, 67, ?",
+                options: ["131", "128", "135", "121"],
+                answer: 0, // 131
+                explanation: "The differences are doubling: +4, +8, +16, +32. Next difference is +64. So 67 + 64 = 131.",
+                difficulty: "Moderate",
+                year: "2024"
+            },
+            {
+                id: 9,
+                exam: "RRB NTPC",
+                subject: "Reasoning",
+                chapter: "Blood Relations",
+                question: "Pointing to a man, a woman said, 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+                options: ["Grandmother", "Mother", "Sister", "Aunt"],
+                answer: 1, // Mother
+                explanation: "'Only daughter of my mother' = the woman herself. So the man's mother is the woman. She is his Mother.",
+                difficulty: "Easy",
+                year: "2021"
+            },
+            {
+                id: 10,
+                exam: "RRB JE",
+                subject: "Reasoning",
+                chapter: "Analogy",
+                question: "Select the related word pair: Locomotive : Railway :: Ship : ?",
+                options: ["Highway", "Ocean", "Airport", "Dockyard"],
+                answer: 1, // Ocean
+                explanation: "Locomotives travel on Railways; Ships travel on the Ocean.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+
+            // General Science
+            {
+                id: 11,
+                exam: "RRB ALP",
+                subject: "General Science",
+                chapter: "Physics - Work and Energy",
+                question: "What is the commercial unit of electrical energy consumed in households?",
+                options: ["Joule", "Watt-second", "Kilowatt-hour (kWh)", "Volt-Ampere"],
+                answer: 2, // Kilowatt-hour (kWh)
+                explanation: "1 kWh (Kilowatt-hour) is equal to 1 Unit of electricity = 3.6 × 10^6 Joules.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 12,
+                exam: "RRB Group D",
+                subject: "General Science",
+                chapter: "Physics - Electricity",
+                question: "According to Ohm's Law, if voltage (V) remains constant and resistance (R) is doubled, what happens to current (I)?",
+                options: ["Doubled", "Halved", "Quadrupled", "Remains same"],
+                answer: 1, // Halved
+                explanation: "I = V / R. If R becomes 2R, then I becomes I/2 (halved).",
+                difficulty: "Easy",
+                year: "2022"
+            },
+            {
+                id: 13,
+                exam: "RRB JE",
+                subject: "General Science",
+                chapter: "Chemistry - Periodic Table",
+                question: "Which metal is the best conductor of electricity among the following?",
+                options: ["Gold", "Copper", "Silver", "Aluminum"],
+                answer: 2, // Silver
+                explanation: "Silver (Ag) has the highest electrical conductivity of any element, followed by Copper and Gold.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 14,
+                exam: "RRB Group D",
+                subject: "General Science",
+                chapter: "Biology - Cells",
+                question: "Which organelle is known as the 'Powerhouse of the Cell'?",
+                options: ["Ribosome", "Mitochondria", "Lysosome", "Golgi Body"],
+                answer: 1, // Mitochondria
+                explanation: "Mitochondria produce cellular energy in the form of ATP during respiration.",
+                difficulty: "Easy",
+                year: "2021"
+            },
+            {
+                id: 15,
+                exam: "RRB NTPC",
+                subject: "General Science",
+                chapter: "Biology - Human Physiology",
+                question: "Where does the complete digestion of carbohydrates, proteins, and fats take place in the human body?",
+                options: ["Stomach", "Large Intestine", "Small Intestine", "Liver"],
+                answer: 2, // Small Intestine
+                explanation: "The small intestine receives digestive juices from the liver and pancreas to complete digestion.",
+                difficulty: "Moderate",
+                year: "2024"
+            },
+
+            // General Awareness & Current Affairs
+            {
+                id: 16,
+                exam: "RRB NTPC",
+                subject: "General Awareness",
+                chapter: "Indian Railways History",
+                question: "In which year was the first passenger train operated in India between Bombay (Bori Bunder) and Thane?",
+                options: ["1848", "1853", "1881", "1905"],
+                answer: 1, // 1853
+                explanation: "India's first passenger train ran on 16th April 1853 over a distance of 34 km with 14 carriages.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 17,
+                exam: "RRB NTPC",
+                subject: "General Awareness",
+                chapter: "Indian Constitution",
+                question: "Which Article of the Indian Constitution prohibits Untouchability and its practice in any form?",
+                options: ["Article 14", "Article 17", "Article 19", "Article 21"],
+                answer: 1, // Article 17
+                explanation: "Article 17 of the Indian Constitution abolishes Untouchability and forbids its practice.",
+                difficulty: "Easy",
+                year: "2021"
+            },
+            {
+                id: 18,
+                exam: "RPF SI",
+                subject: "General Awareness",
+                chapter: "Geography",
+                question: "Which river is known as 'Sorrow of Bengal' due to its frequent destructive floods?",
+                options: ["Kosi River", "Damodar River", "Hooghly River", "Brahmaputra River"],
+                answer: 1, // Damodar River
+                explanation: "The Damodar River was historically called the Sorrow of Bengal before the construction of Damodar Valley reservoirs.",
+                difficulty: "Easy",
+                year: "2024"
+            },
+            {
+                id: 19,
+                exam: "RRB NTPC",
+                subject: "Current Affairs",
+                chapter: "Railway Innovations",
+                question: "What is the official name of the Automatic Train Protection (ATP) system developed by Indian Railways to prevent collision?",
+                options: ["Raksha", "Kavach", "Suraksha", "Trinetra"],
+                answer: 1, // Kavach
+                explanation: "'Kavach' is the indigenous Automatic Train Protection system designed to prevent signal passing at danger and head-on collisions.",
+                difficulty: "Moderate",
+                year: "2024"
+            },
+            {
+                id: 20,
+                exam: "RRB ALP",
+                subject: "Current Affairs",
+                chapter: "Science & Space",
+                question: "Which rocket launcher was used by ISRO to successfully launch the Chandrayaan-3 lunar mission?",
+                options: ["PSLV-C56", "LVM3-M4", "GSLV-F12", "SSLV-D2"],
+                answer: 1, // LVM3-M4
+                explanation: "ISRO launched Chandrayaan-3 using the LVM3-M4 launch vehicle from Sriharikota.",
+                difficulty: "Moderate",
+                year: "2024"
+            }
+        ];
+
+        /* ==========================================================================
+           2. TEST CONFIGURATIONS DATABASE
+           ========================================================================== */
+        const mockTestConfigs = [
+            {
+                id: "ntpc-mock-1",
+                title: "RRB NTPC Stage 1 Full Mock Test 1",
+                exam: "RRB NTPC",
+                totalQuestions: 20,
+                durationMinutes: 20,
+                marksPerQuestion: 1.0,
+                negativeMarking: 0.33,
+                difficulty: "Moderate",
+                subjects: ["Mathematics", "Reasoning", "General Science", "General Awareness"]
+            },
+            {
+                id: "groupd-mock-1",
+                title: "RRB Group D CBT Practice Test 1",
+                exam: "RRB Group D",
+                totalQuestions: 15,
+                durationMinutes: 15,
+                marksPerQuestion: 1.0,
+                negativeMarking: 0.33,
+                difficulty: "Easy",
+                subjects: ["Mathematics", "General Science"]
+            },
+            {
+                id: "alp-mock-1",
+                title: "RRB ALP Loco Pilot Speed Test",
+                exam: "RRB ALP",
+                totalQuestions: 15,
+                durationMinutes: 15,
+                marksPerQuestion: 1.0,
+                negativeMarking: 0.33,
+                difficulty: "Hard",
+                subjects: ["General Science", "Reasoning"]
+            }
+        ];
+
+        const examsList = [
+            { name: "RRB NTPC", full: "Non-Technical Popular Categories", desc: "For Station Master, Goods Guard, Commercial Apprentice, and Typist posts.", questions: "100 Qs", time: "90 Mins" },
+            { name: "RRB Group D", full: "Level 1 Track Maintainer & Assistant", desc: "Comprehensive technical and physical efficiency test for Railway Level 1.", questions: "100 Qs", time: "90 Mins" },
+            { name: "RRB ALP", full: "Assistant Loco Pilot & Technician", desc: "Covers Basic Science, Engineering, Physics, and Mechanical reasoning.", questions: "75 Qs", time: "60 Mins" },
+            { name: "RRB Technician", full: "Grade III & Signal Technicians", desc: "Dedicated test series for Railway Grade 1 and Grade 3 Technician posts.", questions: "100 Qs", time: "90 Mins" },
+            { name: "RRB JE", full: "Junior Engineer (Civil, Mechanical, Electrical)", desc: "Technical paper stage 1 & 2 practice questions.", questions: "100 Qs", time: "90 Mins" },
+            { name: "RPF SI", full: "Railway Protection Force Constable & SI", desc: "Focuses on General Awareness, Arithmetic, and General Intelligence.", questions: "120 Qs", time: "90 Mins" }
+        ];
+
+        /* ==========================================================================
+           3. GLOBAL APPLICATION STATE & ENGINE STATE
+           ========================================================================== */
+        let activeUser = JSON.parse(localStorage.getItem('tough_railway_user')) || {
+            name: "Aspirant",
+            exam: "RRB NTPC"
+        };
+
+        // CBT Active Test Engine State
+        let cbtState = {
+            testConfig: null,
+            questions: [],
+            currentIndex: 0,
+            userAnswers: [], // Array storing selected option index or null
+            questionStates: [], // 'not-visited', 'not-answered', 'answered', 'marked', 'ans-marked'
+            timerInterval: null,
+            secondsRemaining: 0,
+            timeSpentSeconds: 0,
+            activeSubjectTab: 'ALL'
+        };
+
+        let userBookmarks = JSON.parse(localStorage.getItem('tough_railway_bookmarks')) || [];
+        let testHistory = JSON.parse(localStorage.getItem('tough_railway_history')) || [];
+        let lastTestResult = null;
+
+        /* ==========================================================================
+           4. ROUTING & NAVIGATION ENGINE
+           ========================================================================== */
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // Show target page
+            const target = document.getElementById(`view-${pageId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Toggle top header visibility (Hide during CBT fullscreen test engine)
+            const header = document.getElementById('main-header');
+            if (pageId === 'test-engine') {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger view specific initialization
+            if (pageId === 'home') initHomeView();
+            if (pageId === 'mock-tests') renderMockTests();
+            if (pageId === 'chapter-tests') renderChapterTests();
+            if (pageId === 'practice') loadPracticeQuestion();
+            if (pageId === 'dashboard') renderDashboardView();
+            if (pageId === 'bookmarks') renderBookmarksView();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        /* ==========================================================================
+           5. HOMEPAGE VIEW INITIALIZATION
+           ========================================================================== */
+        function initHomeView() {
+            // Render Exams Grid
+            const examContainer = document.getElementById('exams-grid-container');
+            if (examContainer) {
+                examContainer.innerHTML = examsList.map(e => `
+                    <div class="bg-slate-800/80 border border-slate-700/80 hover:border-amber-500/50 rounded-2xl p-6 space-y-4 transition group">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">${e.questions} | ${e.time}</span>
+                            <i class="fa-solid fa-train text-slate-600 group-hover:text-amber-400 transition text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition">${e.name}</h3>
+                            <p class="text-xs text-slate-400 mt-1">${e.full}</p>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed">${e.desc}</p>
+                        <button onclick="navigateTo('exams'); loadExamDetail('${e.name}')" class="w-full py-2.5 bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition flex items-center justify-center gap-1.5">
+                            Practice ${e.name} <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            // Render Subjects Grid
+            const subjectsList = [
+                { name: "Mathematics", desc: "Percentage, Ratio, Profit & Loss, Time & Work, Speed & Distance.", icon: "fa-calculator", count: "3,500+ Qs" },
+                { name: "Reasoning", desc: "Syllogism, Coding-Decoding, Blood Relations, Series & Analogy.", icon: "fa-brain", count: "3,000+ Qs" },
+                { name: "General Science", desc: "Physics, Chemistry, and Life Sciences up to 10th Standard.", icon: "fa-flask", count: "2,500+ Qs" },
+                { name: "General Awareness", desc: "Indian History, Constitution, Geography, and Railway GK.", icon: "fa-landmark", count: "1,500+ Qs" },
+                { name: "Current Affairs", desc: "Latest national developments, awards, sports, and science news.", icon: "fa-newspaper", count: "1,000+ Qs" }
+            ];
+
+            const subjectContainer = document.getElementById('subjects-grid-container');
+            if (subjectContainer) {
+                subjectContainer.innerHTML = subjectsList.map(s => `
+                    <div class="bg-slate-800/80 border border-slate-700/80 hover:border-blue-500/50 rounded-2xl p-6 space-y-4 transition">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid ${s.icon}"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400">${s.count}</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">${s.name}</h3>
+                            <p class="text-xs text-slate-400 mt-1">${s.desc}</p>
+                        </div>
+                        <button onclick="navigateTo('chapter-tests')" class="w-full py-2 bg-slate-900 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 transition">
+                            Practice ${s.name}
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* ==========================================================================
+           6. EXAM DETAIL PAGE ENGINE
+           ========================================================================== */
+        function loadExamDetail(examName) {
+            const exam = examsList.find(e => e.name === examName) || examsList[0];
+            
+            const header = document.getElementById('exam-detail-header');
+            header.innerHTML = `
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="px-3 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase">Official Syllabus Pattern</span>
+                        <h1 class="text-3xl font-black text-white mt-2">${exam.name} Exam Overview</h1>
+                        <p class="text-slate-300 text-sm mt-1">${exam.full}</p>
+                    </div>
+                    <button onclick="startExamMock('${exam.name}')" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow transition">
+                        Attempt Official Pattern Mock
+                    </button>
+                </div>
+            `;
+
+            const patternBox = document.getElementById('exam-pattern-content');
+            patternBox.innerHTML = `
+                <p>The <strong>${exam.name}</strong> examination is conducted as a Computer Based Test (CBT) by the Railway Recruitment Boards (RRB). Questions are multiple-choice objective type with 4 options.</p>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 space-y-2">
+                    <div class="flex justify-between text-xs font-semibold"><span>Total Questions:</span> <span class="text-amber-400">${exam.questions}</span></div>
+                    <div class="flex justify-between text-xs font-semibold"><span>Total Duration:</span> <span class="text-amber-400">${exam.time}</span></div>
+                    <div class="flex justify-between text-xs font-semibold"><span>Marks per Correct Answer:</span> <span class="text-emerald-400">+1.0 Mark</span></div>
+                    <div class="flex justify-between text-xs font-semibold"><span>Negative Marking:</span> <span class="text-rose-400">1/3rd (-0.33 Mark)</span></div>
+                </div>
+            `;
+
+            const subjectsBox = document.getElementById('exam-subjects-list');
+            subjectsBox.innerHTML = `
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700"><strong class="text-white">Mathematics:</strong> 30 Questions</div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700"><strong class="text-white">General Intelligence & Reasoning:</strong> 30 Questions</div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700"><strong class="text-white">General Science:</strong> 25 Questions</div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700"><strong class="text-white">General Awareness & GK:</strong> 15 Questions</div>
+            `;
+
+            const faqsBox = document.getElementById('exam-faqs-container');
+            faqsBox.innerHTML = `
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 space-y-1">
+                    <h4 class="font-bold text-white text-sm">Is there negative marking in ${exam.name}?</h4>
+                    <p class="text-xs text-slate-400">Yes, 1/3rd of the marks allocated to the question will be deducted for every wrong response.</p>
+                </div>
+                <div class="p-4 bg-slate-900 rounded-xl border border-slate-700 space-y-1">
+                    <h4 class="font-bold text-white text-sm">What language is the CBT available in?</h4>
+                    <p class="text-xs text-slate-400">The exam can be taken in English, Hindi, and 13 regional languages.</p>
+                </div>
+            `;
+        }
+
+        /* ==========================================================================
+           7. MOCK TESTS & CHAPTER TESTS RENDERER
+           ========================================================================== */
+        function renderMockTests() {
+            const filter = document.getElementById('mock-exam-filter')?.value || 'ALL';
+            const container = document.getElementById('mock-tests-list');
+            
+            const filtered = filter === 'ALL' ? mockTestConfigs : mockTestConfigs.filter(m => m.exam === filter);
+
+            if (container) {
+                container.innerHTML = filtered.map(m => `
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 space-y-4 flex flex-col justify-between hover:border-amber-500/40 transition">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold">${m.exam}</span>
+                                <span class="text-slate-400 font-semibold">${m.difficulty}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">${m.title}</h3>
+                            <div class="flex items-center gap-4 text-xs text-slate-400 pt-2 border-t border-slate-700/80">
+                                <span><i class="fa-regular fa-file-lines text-amber-400 mr-1"></i> ${m.totalQuestions} Questions</span>
+                                <span><i class="fa-regular fa-clock text-amber-400 mr-1"></i> ${m.durationMinutes} Mins</span>
+                                <span><i class="fa-solid fa-minus text-rose-400 mr-1"></i> -0.33</span>
+                            </div>
+                        </div>
+
+                        <button onclick="initiateCBTTest('${m.id}')" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs rounded-xl shadow transition">
+                            Start Mock Test
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderChapterTests() {
+            const chapters = [
+                { title: "Percentage & Fraction Conversion", subject: "Mathematics", exam: "RRB NTPC", qCount: 5, time: 5 },
+                { title: "Syllogisms & Logical Venn Diagrams", subject: "Reasoning", exam: "RRB Group D", qCount: 5, time: 5 },
+                { title: "Ohm's Law & Electric Circuits", subject: "General Science", exam: "RRB ALP", qCount: 5, time: 5 },
+                { title: "Indian Railways History & GK", subject: "General Awareness", exam: "RRB NTPC", qCount: 5, time: 5 }
+            ];
+
+            const container = document.getElementById('chapter-tests-container');
+            if (container) {
+                container.innerHTML = chapters.map(c => `
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 space-y-4">
+                        <span class="text-xs font-bold text-amber-400 uppercase">${c.subject}</span>
+                        <h3 class="text-lg font-bold text-white">${c.title}</h3>
+                        <p class="text-xs text-slate-400">Target Exam: ${c.exam}</p>
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-700 pt-3">
+                            <span>${c.qCount} Questions</span>
+                            <span>${c.time} Minutes</span>
+                        </div>
+                        <button onclick="startExamMock('${c.exam}')" class="w-full py-2.5 bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold text-xs rounded-xl border border-slate-700 transition">
+                            Start Chapter Test
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* ==========================================================================
+           8. PYQ SELECTOR TEST STARTER
+           ========================================================================== */
+        function startPYQTest() {
+            const exam = document.getElementById('pyq-exam-select').value;
+            const year = document.getElementById('pyq-year-select').value;
+            const shift = document.getElementById('pyq-shift-select').value;
+
+            // Generate temporary mock test config
+            const pyqConfig = {
+                id: `pyq-${exam}-${year}`,
+                title: `${exam} ${year} (${shift}) Official Solved Paper`,
+                exam: exam,
+                totalQuestions: 10,
+                durationMinutes: 10,
+                marksPerQuestion: 1.0,
+                negativeMarking: 0.33,
+                subjects: ["Mathematics", "Reasoning", "General Science", "General Awareness"]
+            };
+
+            initiateCBTTestCustom(pyqConfig);
+        }
+
+        /* ==========================================================================
+           9. CBT TEST ENGINE CORE (TCS iON REPLICA)
+           ========================================================================== */
+        function initiateCBTTest(testId) {
+            const config = mockTestConfigs.find(t => t.id === testId) || mockTestConfigs[0];
+            initiateCBTTestCustom(config);
+        }
+
+        function initiateCBTTestCustom(config) {
+            // Filter or prepare questions for this exam
+            let testQuestions = questionsDB.filter(q => q.exam === config.exam);
+            if (testQuestions.length === 0) {
+                testQuestions = questionsDB.slice(0, 15); // Fallback if questions DB smaller
+            }
+
+            // Reset CBT state
+            cbtState = {
+                testConfig: config,
+                questions: testQuestions,
+                currentIndex: 0,
+                userAnswers: new Array(testQuestions.length).fill(null),
+                questionStates: new Array(testQuestions.length).fill('not-visited'),
+                timerInterval: null,
+                secondsRemaining: config.durationMinutes * 60,
+                timeSpentSeconds: 0,
+                activeSubjectTab: 'ALL'
+            };
+
+            // Mark first question as not-answered (visited)
+            cbtState.questionStates[0] = 'not-answered';
+
+            // Set Title & User Info
+            document.getElementById('cbt-test-title').innerText = config.title;
+            document.getElementById('cbt-user-name').innerText = `Candidate: ${activeUser.name}`;
+
+            // Setup Subject Tabs
+            setupCBTSubjectTabs();
+
+            // Render Palette
+            renderCBTPalette();
+
+            // Render Current Question
+            renderCBTQuestion();
+
+            // Start Countdown Timer
+            startCBTTimer();
+
+            // Navigate to Test Engine View
+            navigateTo('test-engine');
+        }
+
+        function setupCBTSubjectTabs() {
+            const tabsContainer = document.getElementById('cbt-subject-tabs');
+            const subjects = ['ALL', ...new Set(cbtState.questions.map(q => q.subject))];
+
+            tabsContainer.innerHTML = subjects.map(s => `
+                <button onclick="filterCBTSubject('${s}')" class="px-3 py-1 rounded-md text-xs font-semibold ${cbtState.activeSubjectTab === s ? 'bg-amber-500 text-slate-950 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}">
+                    ${s}
+                </button>
+            `).join('');
+        }
+
+        function filterCBTSubject(subj) {
+            cbtState.activeSubjectTab = subj;
+            setupCBTSubjectTabs();
+
+            if (subj !== 'ALL') {
+                const idx = cbtState.questions.findIndex(q => q.subject === subj);
+                if (idx !== -1) {
+                    jumpToQuestion(idx);
+                }
+            }
+        }
+
+        function startCBTTimer() {
+            if (cbtState.timerInterval) clearInterval(cbtState.timerInterval);
+
+            const timerDisplay = document.getElementById('cbt-timer');
+
+            cbtState.timerInterval = setInterval(() => {
+                cbtState.secondsRemaining--;
+                cbtState.timeSpentSeconds++;
+
+                const mins = Math.floor(cbtState.secondsRemaining / 60);
+                const secs = cbtState.secondsRemaining % 60;
+
+                timerDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (cbtState.secondsRemaining <= 300) {
+                    timerDisplay.classList.add('text-rose-500', 'animate-pulse');
+                }
+
+                if (cbtState.secondsRemaining <= 0) {
+                    clearInterval(cbtState.timerInterval);
+                    alert("Time is up! Submitting your test automatically.");
+                    submitCBTTest();
+                }
+            }, 1000);
+        }
+
+        function renderCBTQuestion() {
+            const q = cbtState.questions[cbtState.currentIndex];
+            const qNumDisplay = document.getElementById('cbt-q-number');
+            const qTextDisplay = document.getElementById('cbt-q-text');
+            const optionsContainer = document.getElementById('cbt-options-container');
+
+            qNumDisplay.innerText = `Question No. ${cbtState.currentIndex + 1} (${q.subject})`;
+            qTextDisplay.innerText = q.question;
+
+            const currentAns = cbtState.userAnswers[cbtState.currentIndex];
+
+            optionsContainer.innerHTML = q.options.map((opt, idx) => `
+                <label onclick="selectCBTOption(${idx})" class="flex items-start gap-3 p-4 rounded-xl border ${currentAns === idx ? 'bg-amber-500/10 border-amber-500 text-amber-300 font-semibold' : 'bg-slate-800/80 border-slate-700 text-slate-200 hover:border-slate-600'} cursor-pointer transition">
+                    <input type="radio" name="cbt_option" ${currentAns === idx ? 'checked' : ''} class="mt-1 text-amber-500 focus:ring-amber-400">
+                    <span class="text-sm">${String.fromCharCode(65 + idx)}. ${opt}</span>
+                </label>
+            `).join('');
+
+            // Update bookmark button style
+            const isBookmarked = userBookmarks.some(bm => bm.id === q.id);
+            const bmBtn = document.getElementById('cbt-bookmark-btn');
+            bmBtn.className = isBookmarked ? "text-amber-400 transition" : "text-slate-400 hover:text-amber-400 transition";
+
+            updatePaletteLegendCounts();
+        }
+
+        function selectCBTOption(optIdx) {
+            cbtState.userAnswers[cbtState.currentIndex] = optIdx;
+            renderCBTQuestion();
+        }
+
+        function cbtActionSaveAndNext() {
+            const currIdx = cbtState.currentIndex;
+            if (cbtState.userAnswers[currIdx] !== null) {
+                cbtState.questionStates[currIdx] = 'answered';
+            } else {
+                cbtState.questionStates[currIdx] = 'not-answered';
+            }
+
+            nextCBTQuestion();
+        }
+
+        function cbtActionMarkForReview() {
+            const currIdx = cbtState.currentIndex;
+            if (cbtState.userAnswers[currIdx] !== null) {
+                cbtState.questionStates[currIdx] = 'ans-marked';
+            } else {
+                cbtState.questionStates[currIdx] = 'marked';
+            }
+
+            nextCBTQuestion();
+        }
+
+        function cbtActionClearResponse() {
+            const currIdx = cbtState.currentIndex;
+            cbtState.userAnswers[currIdx] = null;
+            cbtState.questionStates[currIdx] = 'not-answered';
+            renderCBTQuestion();
+            renderCBTPalette();
+        }
+
+        function cbtActionPrevious() {
+            if (cbtState.currentIndex > 0) {
+                cbtState.currentIndex--;
+                if (cbtState.questionStates[cbtState.currentIndex] === 'not-visited') {
+                    cbtState.questionStates[cbtState.currentIndex] = 'not-answered';
+                }
+                renderCBTQuestion();
+                renderCBTPalette();
+            }
+        }
+
+        function nextCBTQuestion() {
+            if (cbtState.currentIndex < cbtState.questions.length - 1) {
+                cbtState.currentIndex++;
+                if (cbtState.questionStates[cbtState.currentIndex] === 'not-visited') {
+                    cbtState.questionStates[cbtState.currentIndex] = 'not-answered';
+                }
+                renderCBTQuestion();
+                renderCBTPalette();
+            } else {
+                renderCBTPalette();
+            }
+        }
+
+        function jumpToQuestion(idx) {
+            cbtState.currentIndex = idx;
+            if (cbtState.questionStates[idx] === 'not-visited') {
+                cbtState.questionStates[idx] = 'not-answered';
+            }
+            renderCBTQuestion();
+            renderCBTPalette();
+        }
+
+        function renderCBTPalette() {
+            const container = document.getElementById('cbt-palette-grid');
+            container.innerHTML = cbtState.questions.map((_, idx) => {
+                const state = cbtState.questionStates[idx];
+                let stateClass = 'q-not-visited';
+                if (state === 'not-answered') stateClass = 'q-not-answered';
+                if (state === 'answered') stateClass = 'q-answered';
+                if (state === 'marked') stateClass = 'q-marked';
+                if (state === 'ans-marked') stateClass = 'q-ans-marked';
+
+                const isCurrent = idx === cbtState.currentIndex;
+
+                return `
+                    <button onclick="jumpToQuestion(${idx})" class="w-8 h-8 rounded text-xs font-bold border transition ${stateClass} ${isCurrent ? 'ring-2 ring-white scale-105' : ''}">
+                        ${idx + 1}
+                    </button>
+                `;
+            }).join('');
+
+            updatePaletteLegendCounts();
+        }
+
+        function updatePaletteLegendCounts() {
+            const counts = {
+                answered: cbtState.questionStates.filter(s => s === 'answered').length,
+                notAnswered: cbtState.questionStates.filter(s => s === 'not-answered').length,
+                notVisited: cbtState.questionStates.filter(s => s === 'not-visited').length,
+                marked: cbtState.questionStates.filter(s => s === 'marked').length,
+                ansMarked: cbtState.questionStates.filter(s => s === 'ans-marked').length
+            };
+
+            document.getElementById('legend-count-answered').innerText = counts.answered;
+            document.getElementById('legend-count-not-answered').innerText = counts.notAnswered;
+            document.getElementById('legend-count-not-visited').innerText = counts.notVisited;
+            document.getElementById('legend-count-marked').innerText = counts.marked;
+            document.getElementById('legend-count-ans-marked').innerText = counts.ansMarked;
+        }
+
+        function confirmSubmitTest() {
+            if (confirm("Are you sure you want to submit the test? You cannot alter answers after submission.")) {
+                submitCBTTest();
+            }
+        }
+
+        /* ==========================================================================
+           10. SCORING & RESULT ANALYSIS ENGINE
+           ========================================================================== */
+        function submitCBTTest() {
+            if (cbtState.timerInterval) clearInterval(cbtState.timerInterval);
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unattemptedCount = 0;
+
+            const detailedReview = cbtState.questions.map((q, idx) => {
+                const userAns = cbtState.userAnswers[idx];
+                let status = 'unattempted';
+
+                if (userAns !== null) {
+                    if (userAns === q.answer) {
+                        correctCount++;
+                        status = 'correct';
+                    } else {
+                        incorrectCount++;
+                        status = 'incorrect';
+                    }
+                } else {
+                    unattemptedCount++;
+                }
+
+                return {
+                    question: q,
+                    userAnswer: userAns,
+                    correctAnswer: q.answer,
+                    status: status
+                };
+            });
+
+            // Raw score calculation
+            const rawScore = (correctCount * 1.0) - (incorrectCount * 0.33);
+            const totalQuestions = cbtState.questions.length;
+            const attempted = correctCount + incorrectCount;
+            const accuracy = attempted > 0 ? ((correctCount / attempted) * 100).toFixed(1) : 0;
+
+            lastTestResult = {
+                testTitle: cbtState.testConfig.title,
+                date: new Date().toLocaleDateString(),
+                score: rawScore.toFixed(2),
+                totalQuestions: totalQuestions,
+                attempted: attempted,
+                correct: correctCount,
+                incorrect: incorrectCount,
+                unattempted: unattemptedCount,
+                accuracy: accuracy,
+                timeSpentSeconds: cbtState.timeSpentSeconds,
+                reviews: detailedReview
+            };
+
+            // Save to localStorage history
+            testHistory.unshift({
+                testTitle: lastTestResult.testTitle,
+                date: lastTestResult.date,
+                score: lastTestResult.score,
+                accuracy: lastTestResult.accuracy
+            });
+            localStorage.setItem('tough_railway_history', JSON.stringify(testHistory));
+
+            // Render Results View
+            renderResultView();
+            navigateTo('result');
+        }
+
+        function renderResultView() {
+            if (!lastTestResult) return;
+
+            document.getElementById('result-test-title').innerText = lastTestResult.testTitle;
+            document.getElementById('res-score').innerText = lastTestResult.score;
+            document.getElementById('res-accuracy').innerText = `${lastTestResult.accuracy}%`;
+            document.getElementById('res-correct').innerText = lastTestResult.correct;
+            document.getElementById('res-incorrect').innerText = lastTestResult.incorrect;
+            document.getElementById('res-unattempted').innerText = lastTestResult.unattempted;
+
+            const mins = Math.floor(lastTestResult.timeSpentSeconds / 60);
+            const secs = lastTestResult.timeSpentSeconds % 60;
+            document.getElementById('res-time-spent').innerText = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+            // Render Subject Performance Bars
+            const subjectPerformanceBars = document.getElementById('subject-performance-bars');
+            const subjects = [...new Set(lastTestResult.reviews.map(r => r.question.subject))];
+
+            subjectPerformanceBars.innerHTML = subjects.map(subj => {
+                const subjReviews = lastTestResult.reviews.filter(r => r.question.subject === subj);
+                const subjCorrect = subjReviews.filter(r => r.status === 'correct').length;
+                const perc = Math.round((subjCorrect / subjReviews.length) * 100);
+
+                return `
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-semibold text-slate-300">
+                            <span>${subj} (${subjCorrect}/${subjReviews.length} Correct)</span>
+                            <span class="text-amber-400">${perc}%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                            <div class="bg-gradient-to-r from-amber-500 to-emerald-500 h-2.5 rounded-full" style="width: ${perc}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Render Solution Reviews
+            renderReviewQuestionsList(lastTestResult.reviews);
+        }
+
+        function renderReviewQuestionsList(reviews) {
+            const container = document.getElementById('review-questions-container');
+            container.innerHTML = reviews.map((r, idx) => {
+                const q = r.question;
+                const isCorrect = r.status === 'correct';
+                const isIncorrect = r.status === 'incorrect';
+
+                let badge = `<span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-400 font-bold text-xs">Unattempted</span>`;
+                if (isCorrect) badge = `<span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-xs border border-emerald-500/30">Correct (+1.0)</span>`;
+                if (isIncorrect) badge = `<span class="px-2.5 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold text-xs border border-rose-500/30">Incorrect (-0.33)</span>`;
+
+                return `
+                    <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-start gap-3">
+                            <span class="text-xs font-bold text-amber-400">Q${idx + 1}. [${q.subject}]</span>
+                            ${badge}
+                        </div>
+                        <p class="text-sm font-medium text-white">${q.question}</p>
+                        
+                        <!-- Options Breakdown -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            ${q.options.map((opt, oIdx) => {
+                                let optStyle = "bg-slate-800 text-slate-300 border-slate-700";
+                                if (oIdx === q.answer) optStyle = "bg-emerald-950/80 text-emerald-300 border-emerald-600 font-bold";
+                                if (r.userAnswer === oIdx && oIdx !== q.answer) optStyle = "bg-rose-950/80 text-rose-300 border-rose-600 font-bold";
+
+                                return `
+                                    <div class="p-3 rounded-lg border ${optStyle} flex justify-between items-center">
+                                        <span>${String.fromCharCode(65 + oIdx)}. ${opt}</span>
+                                        ${oIdx === q.answer ? '<i class="fa-solid fa-check text-emerald-400"></i>' : ''}
+                                        ${r.userAnswer === oIdx && oIdx !== q.answer ? '<i class="fa-solid fa-xmark text-rose-400"></i>' : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Step by Step Explanation -->
+                        <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1">
+                            <div class="font-bold text-amber-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-lightbulb"></i> Step-by-Step Solution:
+                            </div>
+                            <p class="leading-relaxed text-slate-300">${q.explanation}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterReviewList(filter) {
+            if (!lastTestResult) return;
+            if (filter === 'INCORRECT') {
+                renderReviewQuestionsList(lastTestResult.reviews.filter(r => r.status === 'incorrect'));
+            } else {
+                renderReviewQuestionsList(lastTestResult.reviews);
+            }
+        }
+
+        /* ==========================================================================
+           11. PRACTICE MODE ENGINE
+           ========================================================================== */
+        let currentPracticeQ = null;
+
+        function loadPracticeQuestion() {
+            const subjFilter = document.getElementById('practice-subject-filter')?.value || 'ALL';
+            let filtered = questionsDB;
+            if (subjFilter !== 'ALL') filtered = questionsDB.filter(q => q.subject === subjFilter);
+
+            currentPracticeQ = filtered[Math.floor(Math.random() * filtered.length)];
+
+            const card = document.getElementById('practice-card');
+            if (card) {
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 font-bold">${currentPracticeQ.subject} (${currentPracticeQ.chapter})</span>
+                            <span class="text-slate-400 font-semibold">Exam: ${currentPracticeQ.exam}</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white">${currentPracticeQ.question}</h3>
+
+                        <div id="practice-options" class="space-y-2 text-sm">
+                            ${currentPracticeQ.options.map((opt, idx) => `
+                                <button onclick="checkPracticeAnswer(${idx})" class="w-full text-left p-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium transition">
+                                    ${String.fromCharCode(65 + idx)}. ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+
+                        <div id="practice-explanation" class="hidden p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs space-y-2">
+                            <!-- Revealed on click -->
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function checkPracticeAnswer(selectedIdx) {
+            const expBox = document.getElementById('practice-explanation');
+            const isCorrect = selectedIdx === currentPracticeQ.answer;
+
+            expBox.classList.remove('hidden');
+            expBox.innerHTML = `
+                <div class="font-bold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} text-sm">
+                    ${isCorrect ? '✓ Correct Answer!' : '✗ Incorrect Answer.'} Correct Option: ${String.fromCharCode(65 + currentPracticeQ.answer)}
+                </div>
+                <div class="text-slate-300 leading-relaxed mt-1">
+                    <strong>Explanation:</strong> ${currentPracticeQ.explanation}
+                </div>
+            `;
+        }
+
+        /* ==========================================================================
+           12. BOOKMARKS SYSTEM
+           ========================================================================== */
+        function toggleBookmarkCurrentQuestion() {
+            const q = cbtState.questions[cbtState.currentIndex];
+            const idx = userBookmarks.findIndex(bm => bm.id === q.id);
+
+            if (idx === -1) {
+                userBookmarks.push(q);
+                alert("Question bookmarked successfully!");
+            } else {
+                userBookmarks.splice(idx, 1);
+                alert("Question removed from bookmarks.");
+            }
+
+            localStorage.setItem('tough_railway_bookmarks', JSON.stringify(userBookmarks));
+            renderCBTQuestion();
+        }
+
+        function renderBookmarksView() {
+            const container = document.getElementById('bookmarks-container');
+            if (userBookmarks.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-500 bg-slate-800 rounded-2xl">No questions bookmarked yet. Click the bookmark icon during test practice to save questions.</div>`;
+                return;
+            }
+
+            container.innerHTML = userBookmarks.map((q, bIdx) => `
+                <div class="p-6 bg-slate-800 border border-slate-700 rounded-2xl space-y-3">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-amber-400 font-bold">${q.subject} - ${q.chapter}</span>
+                        <button onclick="removeBookmark(${q.id})" class="text-rose-400 hover:text-rose-300">Remove</button>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">${q.question}</h3>
+                    <p class="text-xs text-emerald-400 font-semibold">Answer: ${q.options[q.answer]}</p>
+                    <p class="text-xs text-slate-400 bg-slate-900 p-3 rounded-lg">${q.explanation}</p>
+                </div>
+            `).join('');
+        }
+
+        function removeBookmark(id) {
+            userBookmarks = userBookmarks.filter(bm => bm.id !== id);
+            localStorage.setItem('tough_railway_bookmarks', JSON.stringify(userBookmarks));
+            renderBookmarksView();
+        }
+
+        function clearAllBookmarks() {
+            if (confirm("Clear all bookmarked questions?")) {
+                userBookmarks = [];
+                localStorage.setItem('tough_railway_bookmarks', JSON.stringify(userBookmarks));
+                renderBookmarksView();
+            }
+        }
+
+        /* ==========================================================================
+           13. STUDENT DASHBOARD VIEW
+           ========================================================================== */
+        function renderDashboardView() {
+            document.getElementById('dash-user-welcome').innerText = `Welcome back, ${activeUser.name}!`;
+            document.getElementById('dash-total-tests').innerText = testHistory.length;
+
+            if (testHistory.length > 0) {
+                const totalScores = testHistory.reduce((sum, h) => sum + parseFloat(h.score), 0);
+                const avgScore = (totalScores / testHistory.length).toFixed(1);
+                const bestScore = Math.max(...testHistory.map(h => parseFloat(h.score))).toFixed(1);
+                const avgAcc = Math.round(testHistory.reduce((sum, h) => sum + parseFloat(h.accuracy), 0) / testHistory.length);
+
+                document.getElementById('dash-avg-score').innerText = avgScore;
+                document.getElementById('dash-best-score').innerText = bestScore;
+                document.getElementById('dash-overall-acc').innerText = `${avgAcc}%`;
+
+                // History Table
+                const rows = document.getElementById('dash-history-rows');
+                rows.innerHTML = testHistory.map(h => `
+                    <tr class="hover:bg-slate-800/50 transition">
+                        <td class="p-3 font-semibold text-white">${h.testTitle}</td>
+                        <td class="p-3">${h.date}</td>
+                        <td class="p-3 font-bold text-amber-400">${h.score}</td>
+                        <td class="p-3 font-bold text-emerald-400">${h.accuracy}%</td>
+                        <td class="p-3 text-right">
+                            <button onclick="navigateTo('mock-tests')" class="text-xs text-blue-400 hover:underline">Re-attempt</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        function resetDashboardStats() {
+            if (confirm("Reset practice analytics history?")) {
+                testHistory = [];
+                localStorage.removeItem('tough_railway_history');
+                renderDashboardView();
+            }
+        }
+
+        /* ==========================================================================
+           14. AUTH SIMULATION ENGINE
+           ========================================================================== */
+        function handleDemoLogin(e) {
+            e.preventDefault();
+            const name = document.getElementById('auth-name-input').value;
+            const exam = document.getElementById('auth-exam-input').value;
+
+            activeUser = { name, exam };
+            localStorage.setItem('tough_railway_user', JSON.stringify(activeUser));
+
+            updateAuthUI();
+            navigateTo('dashboard');
+        }
+
+        function updateAuthUI() {
+            const container = document.getElementById('auth-btn-container');
+            if (container) {
+                container.innerHTML = `
+                    <button onclick="navigateTo('dashboard')" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition">
+                        Hi, ${activeUser.name}
+                    </button>
+                `;
+            }
+        }
+
+        function startExamMock(examName) {
+            const mock = mockTestConfigs.find(m => m.exam === examName) || mockTestConfigs[0];
+            initiateCBTTest(mock.id);
+        }
+
+        /* ==========================================================================
+           15. WINDOW INITIALIZATION
+           ========================================================================== */
+        window.onload = function() {
+            updateAuthUI();
+            initHomeView();
+        };
+    </script>
+</body>
+</html>
